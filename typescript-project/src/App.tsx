@@ -3,7 +3,7 @@ import './App.css';
 import {  Navigate, Route, Routes } from 'react-router-dom';
 import LoginPage from './Components/LoginPage';
 import Lists from "./Components/Lists";
-import Course_Description from "./Course_Description";
+import Course_Description from "./Components/Course_Description";
 const App: React.FC = () => {
   return (
    <div>
