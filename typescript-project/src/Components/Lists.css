@@ -1,0 +1,66 @@
+.listContainer{
+    background-color: #2f74c0;
+    padding: 0 1rem 1rem 1rem;
+}
+
+.image-grid {
+    display: flex;
+    justify-content: center;
+}
+
+.image-grid ul {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    list-style: none;
+    padding: 0;
+}
+
+.image-grid li {
+    background-color: azure;
+}
+
+.image-item {
+    padding: 0 0.5rem 0.5rem 0.5rem;
+    width:96%;
+    height:300px;
+    text-align: center;
+}
+
+.courseList img {
+
+}
+
+.courseTitle{
+    color: #2f74c0;
+
+    text-align: center;
+    margin-top: 10px ;
+    margin-bottom: 15px;
+}
+.courseTitle:hover{
+    color:blue;
+    cursor: pointer;
+}
+.courseTitle:visited{
+    color:navy;
+}
+.courseList{
+    border:1px solid #ddd;
+    border-radius: 1rem;
+}
+
+.course-head{
+    text-transform: uppercase;
+    font-size: 45px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    padding: 30px 0;
+    color: white;
+    z-index: 1;
+    text-align: center;
+}
+
+
+

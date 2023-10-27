@@ -1,24 +1,50 @@
 import React,{ useState } from 'react';
+import {useMutation} from "@apollo/client";
+import {LoginMutation} from "../api/login.mutation";
+import { useNavigate } from 'react-router-dom';
 const LoginPage: React.FC = () => {
+    const navigate = useNavigate();
     const [id, setId] = useState<string>("");
     const [pwd, setPwd] = useState<string>("");
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
-        if(id!=="" && pwd!==""){
-            alert("Login successful!");
-            setId("");
-            setPwd("")
+    const [login] = useMutation(LoginMutation, {
+        variables: {
+            email: id,
+            password: pwd
+        },onCompleted: ({ login }) => {
+            console.log(login);
+            localStorage.setItem("token", login?.token);
+            navigate('/list');
+            document.location.reload();
         }
-        else
-            alert("All fields required!")
+    });
 
-    };
+    // const handleSubmit = (e: React.FormEvent) => {
+    //     e.preventDefault();
+        // if(id!=="" && pwd!==""){
+        //     alert("Login successful!");
+        //     setId("");
+        //     setPwd("")
+        // }
+        // else
+        //     alert("All fields required!")
+        // login();
+    // };
 
     return (
+        <div className="App">
+        <div className="heading">
+            SIGN IN
+            <img src={"/Images/Logo.png" } alt={"Logo"} width={"90px"} height={"70px"}  />
+        </div>
         <form
             className="form_Cont"
             onSubmit={(e) => {
-                handleSubmit(e);
+                e.preventDefault();
+                login().then((res) => {
+                    // console.log(res);
+                }).catch(err => {
+                    console.log(err);
+                })
             }}
         >
             <label className="userLabel">User ID:</label>
@@ -42,6 +68,7 @@ const LoginPage: React.FC = () => {
                 LOGIN
             </button>
         </form>
+        </div>
     );
 }
 
